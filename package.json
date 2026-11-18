@@ -1,0 +1,37 @@
+{
+  "name": "agripulse-api",
+  "version": "1.0.0",
+  "description": "AgriPulse - Smart Agriculture REST API for Crop Information and Irrigation Recommendations",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest",
+    "test:ci": "jest --ci --runInBand --colors"
+  },
+  "keywords": [
+    "agripulse",
+    "smart-agriculture",
+    "rest-api",
+    "express",
+    "nodejs",
+    "devops"
+  ],
+  "author": "AgriPulse Team",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}

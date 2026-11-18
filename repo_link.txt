@@ -1,0 +1,4 @@
+# AgriPulse DevOps Repository Link
+# Update this link once the remote Git repository is provisioned during the Git version control stage.
+
+Repository URL: https://github.com/your-username/AgriPulse-DevOps.git
