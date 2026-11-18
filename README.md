@@ -550,3 +550,8 @@ This repository is intentionally structured to cleanly support subsequent DevOps
 ## API Usage Examples
 1./api/recommendations
 2.sample requesting, and testing git commands and adding api usage data.
+
+## CI/CD Integration
+
+AgriPulse uses Jenkins to automatically test and package
+the application whenever changes are pushed to the main branch.
