@@ -546,3 +546,7 @@ This repository is intentionally structured to cleanly support subsequent DevOps
    npm run dev
    ```
 7. Open `http://localhost:5000` in your web browser or send requests using the VS Code REST Client extension / Thunder Client / Postman.
+
+## API Usage Examples
+1./api/recommendations
+2.sample requesting, and testing git commands and adding api usage data.
