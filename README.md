@@ -555,3 +555,12 @@ This repository is intentionally structured to cleanly support subsequent DevOps
 
 AgriPulse uses Jenkins to automatically test and package
 the application whenever changes are pushed to the main branch through GIT.
+
+## Continuous Integration Testing
+
+AgriPulse uses Jenkins for Continuous Integration.
+
+Whenever a developer pushes new changes to the main
+branch, Jenkins automatically checks the repository,
+installs dependencies, executes automated tests,
+and packages the application.
