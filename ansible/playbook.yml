@@ -1,0 +1,7 @@
+---
+- name: Configure AgriPulse application server
+  hosts: agripulse_servers
+  become: yes
+
+  roles:
+    - agripulse

@@ -1,0 +1,41 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: agripulse-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: agripulse
+
+  template:
+    metadata:
+      labels:
+        app: agripulse
+
+    spec:
+      containers:
+        - name: agripulse
+          image: agripulse:1.0
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 5000
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5

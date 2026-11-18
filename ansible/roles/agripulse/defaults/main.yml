@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+---
+app_name: agripulse
+app_port: 5000
+app_directory: /opt/agripulse
+app_user: root
+artifact_name: "agripulse-api-1.0.0.tgz"

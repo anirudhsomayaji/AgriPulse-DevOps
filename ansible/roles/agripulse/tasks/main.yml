@@ -1,0 +1,54 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: Update apt package cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install Node.js and npm
+  apt:
+    name:
+      - nodejs
+      - npm
+    state: present
+
+- name: Create application directory
+  file:
+    path: "{{ app_directory }}"
+    state: directory
+    mode: "0755"
+
+- name: Copy application package to target
+  copy:
+    src: "{{ playbook_dir }}/../artifacts/{{ artifact_name }}"
+    dest: "/tmp/{{ artifact_name }}"
+    mode: "0644"
+  notify: Restart AgriPulse
+
+- name: Extract application package
+  unarchive:
+    src: "/tmp/{{ artifact_name }}"
+    dest: "{{ app_directory }}"
+    remote_src: yes
+    creates: "{{ app_directory }}/package/package.json"
+  notify: Restart AgriPulse
+
+- name: Install production dependencies
+  npm:
+    path: "{{ app_directory }}/package"
+    production: yes
+  notify: Restart AgriPulse
+
+- name: Install AgriPulse systemd service
+  template:
+    src: agripulse.service.j2
+    dest: /etc/systemd/system/agripulse.service
+    mode: "0644"
+  notify: Restart AgriPulse
+
+- name: Enable and start AgriPulse service
+  systemd:
+    name: agripulse
+    enabled: yes
+    state: started
+    daemon_reload: yes

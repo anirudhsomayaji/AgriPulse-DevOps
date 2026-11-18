@@ -1,0 +1,15 @@
+[Unit]
+Description=AgriPulse Smart Agriculture API
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory={{ app_directory }}/package
+ExecStart=/usr/bin/node {{ app_directory }}/package/src/server.js
+Restart=always
+RestartSec=5
+Environment=PORT={{ app_port }}
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
