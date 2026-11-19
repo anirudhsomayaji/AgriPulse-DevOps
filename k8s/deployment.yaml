@@ -4,6 +4,8 @@ kind: Deployment
 
 metadata:
   name: agripulse-deployment
+  labels:
+    app: agripulse
 
 spec:
   replicas: 3
@@ -25,17 +27,26 @@ spec:
 
           ports:
             - containerPort: 5000
+              protocol: TCP
 
+          # Liveness Probe
           livenessProbe:
             httpGet:
               path: /health
               port: 5000
+              scheme: HTTP
             initialDelaySeconds: 15
             periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
 
+          # Readiness Probe
           readinessProbe:
             httpGet:
               path: /health
               port: 5000
+              scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
